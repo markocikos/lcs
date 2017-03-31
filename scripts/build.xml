@@ -1,0 +1,115 @@
+<?xml version="1.0"?>
+<!DOCTYPE project>
+
+<project name="lcs-all" basedir="." default="all">
+	<property name="dir.plugins" value="D:/git/ee-6.2/plugins" />
+	<property name="dir.tomcat" value="D:/liferay/portal/ee-6.2/tomcat-7.0.62" />
+
+	<property name="dir.hooks.portal-compat-hook" value="${dir.plugins}/hooks/portal-compat-hook" />
+
+	<property name="dir.shared.json-web-service-client" value="${dir.plugins}/shared/json-web-service-client-shared" />
+	<property name="dir.shared.lcs-shared" value="${dir.plugins}/shared/lcs-shared" />
+	<property name="dir.shared.osb-lcs-cache-shared" value="${dir.plugins}/shared/osb-lcs-cache-shared" />
+	<property name="dir.shared.osb-lcs-nosql-impl-shared" value="${dir.plugins}/shared/osb-lcs-nosql-impl-shared" />
+	<property name="dir.shared.osb-lcs-nosql-service-shared" value="${dir.plugins}/shared/osb-lcs-nosql-service-shared" />
+	<property name="dir.shared.osb-lcs-queue-shared" value="${dir.plugins}/shared/osb-lcs-queue-shared" />
+
+	<property name="dir.portlets.lcs-portlet" value="${dir.plugins}/portlets/lcs-portlet" />
+	<property name="dir.portlets.oauth-portlet" value="${dir.plugins}/portlets/oauth-portlet" />
+	<property name="dir.portlets.osb-lcs-portlet" value="${dir.plugins}/portlets/osb-lcs-portlet" />
+
+	<property name="dir.themes.osb-lcs-theme" value="${dir.plugins}/themes/osb-lcs-theme" />
+
+	<property name="dir.webs.osb-lcs-gateway-web" value="${dir.plugins}/webs/osb-lcs-gateway-web" />
+	<property name="dir.webs.osb-lcs-processor-web" value="${dir.plugins}/webs/osb-lcs-processor-web" />
+	<property name="dir.webs.osb-lcs-scheduler-web" value="${dir.plugins}/webs/osb-lcs-scheduler-web" />
+
+	<property name="dir.lib.lcs-portlet" value="${dir.portlets.lcs-portlet}/docroot/WEB-INF/lib" />
+	<property name="dir.lib.osb-lcs-portlet" value="${dir.portlets.osb-lcs-portlet}/docroot/WEB-INF/lib" />
+
+	<property name="dir.lib.osb-lcs-gateway-web" value="${dir.webs.osb-lcs-gateway-web}/docroot/WEB-INF/lib" />
+	<property name="dir.lib.osb-lcs-processor-web" value="${dir.webs.osb-lcs-processor-web}/docroot/WEB-INF/lib" />
+	<property name="dir.lib.osb-lcs-scheduler-web" value="${dir.webs.osb-lcs-scheduler-web}/docroot/WEB-INF/lib" />
+
+	<target name="all">
+		<delete includeemptydirs="true">
+			<fileset dir="${dir.tomcat}/temp" >
+				<filename regex=".*lcs.*"/>
+			</fileset>
+		</delete>
+
+		<delete includeemptydirs="true">
+			<fileset dir="${dir.tomcat}/webapps" >
+				<filename regex=".*lcs.*"/>
+			</fileset>
+		</delete>
+
+		<delete includeemptydirs="true">
+			<fileset dir="${dir.tomcat}/work/Catalina/localhost" >
+				<filename regex=".*lcs.*"/>
+			</fileset>
+		</delete>
+	
+		<delete file="${dir.lib.lcs-portlet}/json-web-service-client-shared.jar" />
+		<delete file="${dir.lib.lcs-portlet}/lcs-shared.jar" />
+		<delete file="${dir.lib.osb-lcs-portlet}/json-web-service-client-shared.jar" />
+		<delete file="${dir.lib.osb-lcs-portlet}/lcs-shared.jar" />
+		<delete file="${dir.lib.osb-lcs-portlet}/osb-lcs-nosql-service-shared.jar" />
+		<delete file="${dir.lib.osb-lcs-portlet}/osb-lcs-queue-shared.jar" />
+
+		<delete file="${dir.lib.osb-lcs-gateway-web}/lcs-shared.jar" />
+		<delete file="${dir.lib.osb-lcs-gateway-web}/osb-lcs-cache-shared.jar" />
+		<delete file="${dir.lib.osb-lcs-gateway-web}/osb-lcs-queue-shared.jar" />
+		<delete file="${dir.lib.osb-lcs-processor-web}/json-web-service-client-shared.jar" />
+		<delete file="${dir.lib.osb-lcs-processor-web}/lcs-shared.jar" />
+		<delete file="${dir.lib.osb-lcs-processor-web}/osb-lcs-cache-shared.jar" />
+		<delete file="${dir.lib.osb-lcs-processor-web}/osb-lcs-nosql-impl-shared.jar" />
+		<delete file="${dir.lib.osb-lcs-processor-web}/osb-lcs-nosql-service-shared.jar" />
+		<delete file="${dir.lib.osb-lcs-processor-web}/osb-lcs-queue-shared.jar" />
+		<delete file="${dir.lib.osb-lcs-scheduler-web}/osb-lcs-nosql-impl-shared.jar" />
+		<delete file="${dir.lib.osb-lcs-scheduler-web}/osb-lcs-nosql-service-shared.jar" />
+
+		<ant antfile="${dir.shared.json-web-service-client}/build.xml" dir="${dir.shared.json-web-service-client}" target="clean" />
+		<ant antfile="${dir.shared.json-web-service-client}/build.xml" dir="${dir.shared.json-web-service-client}" target="deploy" />
+		<ant antfile="${dir.shared.lcs-shared}/build.xml" dir="${dir.shared.lcs-shared}" target="clean" />
+		<ant antfile="${dir.shared.lcs-shared}/build.xml" dir="${dir.shared.lcs-shared}" target="deploy" />
+		<ant antfile="${dir.shared.osb-lcs-cache-shared}/build.xml" dir="${dir.shared.osb-lcs-cache-shared}" target="clean" />
+		<ant antfile="${dir.shared.osb-lcs-cache-shared}/build.xml" dir="${dir.shared.osb-lcs-cache-shared}" target="deploy" />
+		<ant antfile="${dir.shared.osb-lcs-nosql-impl-shared}/build.xml" dir="${dir.shared.osb-lcs-nosql-impl-shared}" target="clean" />
+		<ant antfile="${dir.shared.osb-lcs-nosql-impl-shared}/build.xml" dir="${dir.shared.osb-lcs-nosql-impl-shared}" target="deploy" />
+		<ant antfile="${dir.shared.osb-lcs-nosql-service-shared}/build.xml" dir="${dir.shared.osb-lcs-nosql-service-shared}" target="clean" />
+		<ant antfile="${dir.shared.osb-lcs-nosql-service-shared}/build.xml" dir="${dir.shared.osb-lcs-nosql-service-shared}" target="deploy" />
+		<ant antfile="${dir.shared.osb-lcs-queue-shared}/build.xml" dir="${dir.shared.osb-lcs-queue-shared}" target="clean" />
+		<ant antfile="${dir.shared.osb-lcs-queue-shared}/build.xml" dir="${dir.shared.osb-lcs-queue-shared}" target="deploy" />
+
+		<ant antfile="${dir.hooks.portal-compat-hook}/build.xml" dir="${dir.hooks.portal-compat-hook}" target="clean" />
+		<ant antfile="${dir.hooks.portal-compat-hook}/build.xml" dir="${dir.hooks.portal-compat-hook}" target="deploy" />
+
+		<sleep seconds="2" />
+
+		<ant antfile="${dir.webs.osb-lcs-gateway-web}/build.xml" dir="${dir.webs.osb-lcs-gateway-web}" target="clean" />
+		<ant antfile="${dir.webs.osb-lcs-gateway-web}/build.xml" dir="${dir.webs.osb-lcs-gateway-web}" target="deploy" />
+
+		<sleep seconds="2" />
+
+		<ant antfile="${dir.webs.osb-lcs-processor-web}/build.xml" dir="${dir.webs.osb-lcs-processor-web}" target="clean" />
+		<ant antfile="${dir.webs.osb-lcs-processor-web}/build.xml" dir="${dir.webs.osb-lcs-processor-web}" target="deploy" />
+
+		<sleep seconds="2" />
+
+		<ant antfile="${dir.webs.osb-lcs-scheduler-web}/build.xml" dir="${dir.webs.osb-lcs-scheduler-web}" target="clean" />
+		<ant antfile="${dir.webs.osb-lcs-scheduler-web}/build.xml" dir="${dir.webs.osb-lcs-scheduler-web}" target="deploy" />
+
+		<sleep seconds="2" />
+
+		<ant antfile="${dir.portlets.osb-lcs-portlet}/build.xml" dir="${dir.portlets.osb-lcs-portlet}" target="clean" />
+		<ant antfile="${dir.portlets.osb-lcs-portlet}/build.xml" dir="${dir.portlets.osb-lcs-portlet}" target="deploy" />
+		<ant antfile="${dir.portlets.lcs-portlet}/build.xml" dir="${dir.portlets.lcs-portlet}" target="clean" />
+		<ant antfile="${dir.portlets.lcs-portlet}/build.xml" dir="${dir.portlets.lcs-portlet}" target="deploy" />
+		<ant antfile="${dir.portlets.oauth-portlet}/build.xml" dir="${dir.portlets.oauth-portlet}" target="clean" />
+		<ant antfile="${dir.portlets.oauth-portlet}/build.xml" dir="${dir.portlets.oauth-portlet}" target="deploy" />
+
+		<ant antfile="${dir.themes.osb-lcs-theme}/build.xml" dir="${dir.themes.osb-lcs-theme}" target="clean" />
+		<ant antfile="${dir.themes.osb-lcs-theme}/build.xml" dir="${dir.themes.osb-lcs-theme}" target="deploy" />
+	</target>
+</project>
