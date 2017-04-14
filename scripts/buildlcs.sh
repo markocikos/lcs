@@ -5,38 +5,66 @@ deployRoot="/d/liferay/portal/dxp-7.0"
 gitLCSRoot="/d/git/lcs"
 gitPortalRoot="/d/git/ee-7.0/portal/modules"
 
+deployTomcatHome=$deployRoot"/tomcat-8.0.32"
+
+libsPath=$(pwd)"/lib"
 
 ### CLEAN ###
 if [ "$1" == "-c" ] || [ "$1" == "--clean" ] ; then
-	echo "Deleting /deploy"
-	cd $deployRoot"/deploy"
-	exec & rm -rf *
+	if [ -d $deployRoot"/deploy" ] ; then
+		echo "Deleting /deploy"
+		cd $deployRoot"/deploy"
+		exec & rm -rf *
+	fi
 
-	echo "Deleting /osgi/modules"
-	cd $deployRoot"/osgi/modules"
-	exec & rm -rf *
+	if [ -d $deployRoot"/osgi/modules" ] ; then
+		echo "Deleting /osgi/modules"
+		cd $deployRoot"/osgi/modules"
+		exec & rm -rf *
+	fi
 
-	echo "Deleting /osgi/state"
-	cd $deployRoot"/osgi/state"
-	exec & rm -rf *
+	if [ -d $deployRoot"/osgi/state" ] ; then
+		echo "Deleting /osgi/state"
+		cd $deployRoot"/osgi/state"
+		exec & rm -rf *
+	fi
 
-	echo "Deleting /osgi/war"
-	cd $deployRoot"/osgi/war"
-	exec & rm -rf *
+	if [ -d $deployRoot"/osgi/war" ] ; then
+		echo "Deleting /osgi/war"
+		cd $deployRoot"/osgi/war"
+		exec & rm -rf *
+	fi
 
-	echo "Deleting /tomcat-8.0.32/temp"
-	cd $deployRoot"/tomcat-8.0.32/temp"
-	exec & rm -rf *
+	if [ -d $deployTomcatHome"/temp" ] ; then
+		echo "Deleting Tomcat temp"
+		cd $deployTomcatHome"/temp"
+		exec & rm -rf *
+	fi
 
-	echo "Deleting /tomcat-8.0.32/work"
-	cd $deployRoot"/tomcat-8.0.32/work"
-	exec & rm -rf *
+	if [ -d $deployTomcatHome"/work" ] ; then
+		echo "Deleting Tomcat work"
+		cd $deployTomcatHome"/work"
+		exec & rm -rf *
+	fi
 
-	echo "Deleting /work"
-	cd $deployRoot"/work"
-	exec & rm -rf *
+	if [ -d $deployRoot"/work" ] ; then
+		echo "Deleting /work"
+		cd $deployRoot"/work"
+		exec & rm -rf *
+	fi
 fi
 
+## MYSQL ##
+if [ ! -f $deployTomcatHome"/lib/ext/mysql.jar" ] ; then
+	echo "mysql.jar does not exist in Tomcat lib"
+
+	if [ -f $libsPath"/mysql.jar" ] ; then
+		echo "Copying mysql.jar to Tomcat"
+		cp $libsPath"/mysql.jar" $deployTomcatHome"/lib/ext/"
+	fi
+fi
+
+exit
 
 ### PORTAL MODULES ####
 privateApps=$gitPortalRoot"/private/apps"
