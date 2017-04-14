@@ -64,8 +64,6 @@ if [ ! -f $deployTomcatHome"/lib/ext/mysql.jar" ] ; then
 	fi
 fi
 
-exit
-
 ### PORTAL MODULES ####
 privateApps=$gitPortalRoot"/private/apps"
 
