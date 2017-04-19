@@ -10,7 +10,7 @@ deployTomcatHome=$deployRoot"/tomcat-8.0.32"
 libsPath=$(pwd)"/lib"
 
 ### CLEAN ###
-if [ "$1" == *"c"* ] ; then
+if [[ "$1" == *"c"* ]] ; then
 	if [ -d $deployRoot"/deploy" ] ; then
 		echo "Deleting /deploy"
 		cd $deployRoot"/deploy"
@@ -65,7 +65,7 @@ if [ ! -f $deployTomcatHome"/lib/ext/mysql.jar" ] ; then
 fi
 
 ### PORTAL MODULES ####
-if [ "$1" == *"p"* ] ; then
+if [[ "$1" == *"p"* ]] ; then
 	privateApps=$gitPortalRoot"/private/apps"
 
 	lcs=$privateApps"/lcs"
