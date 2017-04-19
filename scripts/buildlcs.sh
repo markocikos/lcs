@@ -10,7 +10,7 @@ deployTomcatHome=$deployRoot"/tomcat-8.0.32"
 libsPath=$(pwd)"/lib"
 
 ### CLEAN ###
-if [ "$1" == "-c" ] || [ "$1" == "--clean" ] ; then
+if [ "$1" == *"c"* ] ; then
 	if [ -d $deployRoot"/deploy" ] ; then
 		echo "Deleting /deploy"
 		cd $deployRoot"/deploy"
@@ -65,29 +65,30 @@ if [ ! -f $deployTomcatHome"/lib/ext/mysql.jar" ] ; then
 fi
 
 ### PORTAL MODULES ####
-privateApps=$gitPortalRoot"/private/apps"
+if [ "$1" == *"p"* ] ; then
+	privateApps=$gitPortalRoot"/private/apps"
 
-lcs=$privateApps"/lcs"
+	lcs=$privateApps"/lcs"
 
-cd $lcs"/lcs-api"
-exec & gradle deploy
+	cd $lcs"/lcs-api"
+	exec & gradle deploy
 
-cd $lcs"/lcs-portlet"
-exec & gradle deploy
+	cd $lcs"/lcs-portlet"
+	exec & gradle deploy
 
-oauth=$privateApps"/oauth"
+	oauth=$privateApps"/oauth"
 
-cd $oauth"/oauth-api"
-exec & gradle deploy
+	cd $oauth"/oauth-api"
+	exec & gradle deploy
 
-cd $oauth"/oauth-service"
-exec & gradle deploy
+	cd $oauth"/oauth-service"
+	exec & gradle deploy
 
-petra=$gitPortalRoot"/apps/foundation/petra/petra-json-web-service-client"
+	petra=$gitPortalRoot"/apps/foundation/petra/petra-json-web-service-client"
 
-cd $petra
-exec & gradle deploy
-
+	cd $petra
+	exec & gradle deploy
+fi
 
 ### OSB LCS MODULES ####
 cd $gitLCSRoot"/osb-lcs-admin"
