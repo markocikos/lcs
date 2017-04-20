@@ -54,7 +54,7 @@ if [[ "$1" == *"c"* ]] ; then
 	fi
 fi
 
-## MYSQL ##
+### MYSQL ###
 if [ ! -f $deployTomcatHome"/lib/ext/mysql.jar" ] ; then
 	echo "mysql.jar does not exist in Tomcat lib"
 
@@ -65,17 +65,8 @@ if [ ! -f $deployTomcatHome"/lib/ext/mysql.jar" ] ; then
 fi
 
 ### PORTAL MODULES ####
+# All of these should eventually be removed.
 if [[ "$1" == *"p"* ]] ; then
-	privateApps=$gitPortalRoot"/private/apps"
-
-	lcs=$privateApps"/lcs"
-
-	cd $lcs"/lcs-api"
-	exec & gradle deploy
-
-	cd $lcs"/lcs-portlet"
-	exec & gradle deploy
-
 	oauth=$privateApps"/oauth"
 
 	cd $oauth"/oauth-api"
@@ -84,13 +75,24 @@ if [[ "$1" == *"p"* ]] ; then
 	cd $oauth"/oauth-service"
 	exec & gradle deploy
 
-	petra=$gitPortalRoot"/apps/foundation/petra/petra-json-web-service-client"
+	#petra=$gitPortalRoot"/apps/foundation/petra/petra-json-web-service-client"
 
-	cd $petra
-	exec & gradle deploy
+	#cd $petra
+	#exec & gradle deploy
 fi
 
-### OSB LCS MODULES ####
+### LCS PORTAL MODULES ###
+privateApps=$gitPortalRoot"/private/apps"
+
+lcs=$privateApps"/lcs"
+
+cd $lcs"/lcs-api"
+exec & gradle deploy
+
+cd $lcs"/lcs-portlet"
+exec & gradle deploy
+
+### OSB LCS MODULES ###
 cd $gitLCSRoot"/osb-lcs-admin"
 exec & gradle deploy
 
