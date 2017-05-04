@@ -66,6 +66,8 @@ fi
 
 ### PORTAL MODULES ####
 # All of these should eventually be removed.
+privateApps=$gitPortalRoot"/private/apps"
+
 if [[ "$1" == *"p"* ]] ; then
 	oauth=$privateApps"/oauth"
 
@@ -75,19 +77,17 @@ if [[ "$1" == *"p"* ]] ; then
 	cd $oauth"/oauth-service"
 	exec & gradle deploy
 
-	#petra=$gitPortalRoot"/apps/foundation/petra/petra-json-web-service-client"
+	petra=$gitPortalRoot"/apps/foundation/petra/petra-json-web-service-client"
 
-	#cd $petra
-	#exec & gradle deploy
+	cd $petra
+	exec & gradle deploy
 fi
 
 ### LCS PORTAL MODULES ###
-privateApps=$gitPortalRoot"/private/apps"
-
 lcs=$privateApps"/lcs"
 
-cd $lcs"/lcs-api"
-exec & gradle deploy
+#cd $lcs"/lcs-api"
+#exec & gradle deploy
 
 cd $lcs"/lcs-portlet"
 exec & gradle deploy
