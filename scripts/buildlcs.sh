@@ -102,6 +102,9 @@ exec & gradle deploy
 cd $gitLCSRoot"/osb-lcs-cache"
 exec & gradle deploy
 
+cd $gitLCSRoot"/osb-lcs-keystore"
+exec & gradle deploy
+
 cd $gitLCSRoot"/osb-lcs-lang"
 exec & gradle deploy
 
