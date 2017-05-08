@@ -77,10 +77,10 @@ if [[ "$1" == *"p"* ]] ; then
 	cd $oauth"/oauth-service"
 	exec & gradle deploy
 
-	petra=$gitPortalRoot"/apps/foundation/petra/petra-json-web-service-client"
+	#petra=$gitPortalRoot"/apps/foundation/petra/petra-json-web-service-client"
 
-	cd $petra
-	exec & gradle deploy
+	#cd $petra
+	#exec & gradle deploy
 fi
 
 ### LCS PORTAL MODULES ###
