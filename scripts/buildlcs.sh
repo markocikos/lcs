@@ -76,18 +76,10 @@ if [[ "$1" == *"p"* ]] ; then
 
 	cd $oauth"/oauth-service"
 	exec & gradle deploy
-
-	#petra=$gitPortalRoot"/apps/foundation/petra/petra-json-web-service-client"
-
-	#cd $petra
-	#exec & gradle deploy
 fi
 
 ### LCS PORTAL MODULES ###
 lcs=$privateApps"/lcs"
-
-#cd $lcs"/lcs-api"
-#exec & gradle deploy
 
 cd $lcs"/lcs-portlet"
 exec & gradle deploy
@@ -120,9 +112,6 @@ exec & gradle deploy
 cd $gitLCSRoot"/osb-lcs-nosql-service-activator"
 exec & gradle deploy
 
-# cd $gitLCSRoot"osb-lcs-qa"
-# exec & gradle deploy
-
 cd $gitLCSRoot"/osb-lcs-queue"
 exec & gradle deploy
 
@@ -134,9 +123,6 @@ exec & gradle deploy
 
 cd $gitLCSRoot"/osb-lcs-taglib"
 exec & gradle deploy
-
-# cd $gitLCSRoot"/osb-lcs-test"
-# exec & gradle deploy
 
 cd $gitLCSRoot"/osb-lcs-theme"
 exec & gulp deploy
