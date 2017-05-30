@@ -93,7 +93,7 @@ cd $lcs"/lcs-portlet"
 exec & gradle deploy
 
 ### OSB LCS MODULES ###
-cd $gitLCSRoot"/osb-lcs-admin"
+cd $gitLCSRoot"/osb-lcs-admin-web"
 exec & gradle deploy
 
 cd $gitLCSRoot"/osb-lcs-api"
