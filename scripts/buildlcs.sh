@@ -3,6 +3,7 @@
 ### PATHS ###
 deployRoot="/d/liferay/portal/dxp-7.0"
 gitLCSRoot="/d/git/lcs"
+gitMonitorRoot="/d/git/internship/team-assignments/monitor"
 gitPortalRoot="/d/git/ee-7.0/portal/modules"
 
 deployTomcatHome=$deployRoot"/tomcat-8.0.32"
@@ -130,6 +131,12 @@ exec & gulp deploy
 cd $gitLCSRoot"/osb-lcs-web"
 exec & gradle deploy
 
+### MONITOR MODULES ####
+cd $gitMonitorRoot"/monitor-singular-web"
+exec & gradle deploy
+
+cd $gitMonitorRoot"/monitor-theme"
+exec & gulp deploy
 
 ### DIAGNOSE ERRORS ###
 ## show status of all modules
