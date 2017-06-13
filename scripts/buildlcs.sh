@@ -69,15 +69,13 @@ fi
 # All of these should eventually be removed.
 privateApps=$gitPortalRoot"/private/apps"
 
-if [[ "$1" == *"p"* ]] ; then
-	oauth=$privateApps"/oauth"
+oauth=$privateApps"/oauth"
 
-	cd $oauth"/oauth-api"
-	exec & gradle deploy
+cd $oauth"/oauth-api"
+exec & gradle deploy
 
-	cd $oauth"/oauth-service"
-	exec & gradle deploy
-fi
+cd $oauth"/oauth-service"
+exec & gradle deploy
 
 ### LCS PORTAL MODULES ###
 lcs=$privateApps"/lcs"
