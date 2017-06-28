@@ -65,24 +65,6 @@ if [ ! -f $deployTomcatHome"/lib/ext/mysql.jar" ] ; then
 	fi
 fi
 
-### PORTAL MODULES ####
-# All of these should eventually be removed.
-privateApps=$gitPortalRoot"/private/apps"
-
-oauth=$privateApps"/oauth"
-
-cd $oauth"/oauth-api"
-exec & gradle deploy
-
-cd $oauth"/oauth-service"
-exec & gradle deploy
-
-### LCS PORTAL MODULES ###
-lcs=$privateApps"/lcs"
-
-cd $lcs"/lcs-portlet"
-exec & gradle deploy
-
 ### OSB LCS MODULES ###
 cd $gitLCSRoot"/osb-lcs-admin-web"
 exec & gradle deploy
@@ -136,9 +118,34 @@ exec & gradle deploy
 cd $gitMonitorRoot"/monitor-theme"
 exec & gulp deploy
 
-### DIAGNOSE ERRORS ###
-## show status of all modules
-exec & blade sh ss | grep lcs
+### PORTAL MODULES ####
+privateApps=$gitPortalRoot"/private/apps"
 
-## show if there are any dependencies issues
-exec & blade sh dm | grep unavailable
+oauth=$privateApps"/oauth"
+
+cd $oauth"/oauth-api"
+exec & gradle deploy
+
+cd $oauth"/oauth-service"
+exec & gradle deploy
+
+lcs=$privateApps"/lcs"
+
+cd $lcs"/lcs-portlet"
+exec & gradle deploy
+
+## lcs-api and petra should be built last, to override deployed modules from dependency definitions in build.gradles. Awesome!
+cd $lcs"/lcs-api"
+exec & gradle deploy
+
+cd $gitPortalRoot"/apps/foundation/petra/petra-json-web-service-client"
+exec & gradle deploy
+
+### DIAGNOSE ERRORS ###
+if [[ "$1" == *"s"* ]] ; then
+	## show status of all modules
+	exec & blade sh ss | grep lcs
+
+	## show if there are any dependencies issues
+	exec & blade sh dm | grep unavailable
+fi
