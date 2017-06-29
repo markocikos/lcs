@@ -57,7 +57,7 @@ fi
 
 ### MYSQL ###
 if [ ! -f $deployTomcatHome"/lib/ext/mysql.jar" ] ; then
-	echo "mysql.jar does not exist in Tomcat lib"
+	echo "ERROR - mysql.jar does not exist in Tomcat lib"
 
 	if [ -f $libsPath"/mysql.jar" ] ; then
 		echo "Copying mysql.jar to Tomcat"
