@@ -132,6 +132,9 @@ lcs=$privateApps"/lcs"
 cd $lcs"/lcs-portlet"
 exec & gradle deploy
 
+cd $lcs"/lcs-security"
+exec & gradle deploy
+
 ## lcs-api and petra should be built last, to override deployed modules from dependency definitions in build.gradles. Awesome!
 cd $lcs"/lcs-api"
 exec & gradle deploy
