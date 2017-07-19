@@ -129,6 +129,9 @@ exec & gradle deploy
 
 lcs=$privateApps"/lcs"
 
+cd $lcs"/lcs-messaging"
+exec & gradle deploy
+
 cd $lcs"/lcs-portlet"
 exec & gradle deploy
 
