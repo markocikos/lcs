@@ -3,6 +3,7 @@
 ### PATHS ###
 deployRoot="/d/liferay/portal/dxp-7.0"
 gitLCSRoot="/d/git/lcs"
+gitPortalPrivateRoot="/d/git/7.0.x-private/portal"
 
 deployTomcatHome=$deployRoot"/tomcat-8.0.32"
 
@@ -61,9 +62,12 @@ if [ ! -f $deployTomcatHome"/lib/ext/mysql.jar" ] ; then
 	fi
 fi
 
-### LCS MODULES ###
+### LCS PLATFORM MODULES ###
 cd $gitLCSRoot
 
-exec & gradle deployLCSModules
-
 exec & gradle deployOSBLCSModules
+
+### LCS CLIENT ###
+cd $gitPortalPrivateRoot"/modules/private/apps/lcs/lcs-portlet"
+
+exec & gradle deploy
