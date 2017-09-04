@@ -3,7 +3,7 @@
 ### PATHS ###
 deployRoot="/d/liferay/portal/dxp-7.0"
 gitLCSRoot="/d/git/lcs"
-gitPortalPrivateRoot="/d/git/7.0.x-private/portal"
+gitPortalPrivateRoot="/d/git/ee-7.0/portal"
 
 deployTomcatHome=$deployRoot"/tomcat-8.0.32"
 
