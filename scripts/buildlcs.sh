@@ -70,4 +70,4 @@ exec & gradle deployOSBLCSModules
 ### LCS CLIENT ###
 cd $gitPortalPrivateRoot"/modules/private/apps/lcs/lcs-portlet"
 
-exec & gradle deploy
+exec & ant clean deploy
