@@ -1,25 +1,17 @@
 {
     "version": "1.11.4",
-
     "api": {
         "host": "api.github.com",
         "protocol": "https",
         "version": "3.0.0",
         "pathPrefix": null
     },
-
-    "default_branch": "master",
-
+    "default_branch": "ee-6.2.x",
     "default_remote": "origin",
-
     "default_pr_forwarder": "",
-
-    "default_pr_reviewer": "",
-
-    "github_token": "",
-
-    "github_user": "",
-
+    "default_pr_reviewer": "ivicac",
+    "github_token": "6354d82a76301c0ac71aad7466fe301afa4e2c41",
+    "github_user": "markocikos",
     "hooks": {
         "issue": {
             "close": {
@@ -29,7 +21,7 @@
             "new": {
                 "before": [],
                 "after": [
-                    "gh is --browser {{options.browser}} --user {{options.user}} --repo {{options.repo}} --number {{options.number}}"
+                    "gh is --browser --user {{options.user}} --repo {{options.repo}} --number {{options.number}}"
                 ]
             },
             "open": {
@@ -44,22 +36,20 @@
             },
             "fetch": {
                 "before": [],
-                "after": [
-                    "gh pr {{options.number}} --user {{options.user}} --repo {{options.repo}} --comment 'Just started reviewing :)'"
-                ]
+                "after": []
             },
             "fwd": {
                 "before": [],
                 "after": [
                     "gh pr {{options.submittedPullNumber}} --user {{options.fwd}} --comment '/cc @{{options.submittedUser}}'",
-                    "gh pr {{options.number}} --user {{options.user}} --repo {{options.repo}} --comment 'Pull request forwarded to {{forwardedLink}}.{{#if options.changes}} [See changes here.]({{compareLink}}){{/if}}'",
+                    "gh pr {{options.number}} --user {{options.user}} --repo {{options.repo}} --comment \"Pull request forwarded to {{forwardedLink}}.{{#if options.changes}} [See changes here.]({{compareLink}}){{/if}}\"",
                     "gh pr {{options.number}} --close"
                 ]
             },
             "merge": {
                 "before": [],
                 "after": [
-                    "gh pr {{options.number}} --user {{options.user}} --repo {{options.repo}} --comment 'Thank you, pull request merged!{{#if options.changes}} [See changes here.]({{compareLink}}){{/if}}'"
+                    "gh pr {{options.number}} --user {{options.user}} --repo {{options.repo}} --comment \"Thank you, pull request merged!{{#if options.changes}} [See changes here.]({{compareLink}}){{/if}}\""
                 ]
             },
             "open": {
@@ -69,8 +59,8 @@
             "submit": {
                 "before": [],
                 "after": [
-                    "{{#if options.number}}gh pr {{options.number}} --user {{options.user}} --repo {{options.repo}} --comment 'Pull request submitted to {{submittedLink}}.{{#if options.changes}} [See changes here.]({{compareLink}}){{/if}}'{{/if}}",
-                    "gh pr --browser {{options.browser}} --user {{options.submit}} --repo {{options.repo}} --number {{options.submittedPull}}",
+                    "{{#if options.number}}gh pr {{options.number}} --user {{options.user}} --repo {{options.repo}} --comment \"Pull request submitted to {{submittedLink}}.{{#if options.changes}} [See changes here.]({{compareLink}}){{/if}}\"{{/if}}",
+                    "gh pr --browser --user {{options.submit}} --repo {{options.repo}} --number {{options.submittedPull}}",
                     "{{#if options.number}}gh pr --user {{options.user}} --repo {{options.repo}} {{options.number}} --close{{/if}}"
                 ]
             }
@@ -87,7 +77,7 @@
             "new": {
                 "before": [],
                 "after": [
-                    "gh re --browser {{options.browser}} --user {{options.user}} --repo {{options.new}}"
+                    "gh re --browser --user {{options.user}} --repo {{options.new}}"
                 ]
             }
         },
@@ -99,25 +89,21 @@
             "fork": {
                 "before": [],
                 "after": [
-                    "gh gi --browser {{options.browser}} --id {{options.id}}"
+                    "gh gi --browser --id {{options.id}}"
                 ]
             },
             "new": {
                 "before": [],
                 "after": [
-                    "gh gi --browser {{options.browser}} --id {{options.id}}"
+                    "gh gi --browser --id {{options.id}}"
                 ]
             }
         }
     },
-
     "ignored_plugins": [],
-
     "pull_branch_name_prefix": "pr-",
-
     "plugins": {},
-
     "replace": {},
-
-    "signature": " <br><br>:octocat: *Sent from [GH](http://nodegh.io).*"
+    "signature": "",
+    "plugins_path": "C:\\Program Files\\nodejs\\node_modules"
 }
