@@ -10,7 +10,7 @@
     "default_remote": "origin",
     "default_pr_forwarder": "",
     "default_pr_reviewer": "ivicac",
-    "github_token": "6354d82a76301c0ac71aad7466fe301afa4e2c41",
+    "github_token": "!TOKEN!",
     "github_user": "markocikos",
     "hooks": {
         "issue": {
