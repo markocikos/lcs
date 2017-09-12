@@ -6,7 +6,7 @@
         "version": "3.0.0",
         "pathPrefix": null
     },
-    "default_branch": "ee-6.2.x",
+    "default_branch": "7.0.x-private",
     "default_remote": "origin",
     "default_pr_forwarder": "",
     "default_pr_reviewer": "ivicac",
