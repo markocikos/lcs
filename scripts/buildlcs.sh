@@ -65,6 +65,8 @@ fi
 ### LCS PLATFORM MODULES ###
 cd $gitLCSRoot
 
+exec & gradle idea
+
 exec & gradle deployOSBLCSModules
 
 ### LCS CLIENT ###
