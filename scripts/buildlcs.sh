@@ -11,44 +11,50 @@ libsPath=$(pwd)"/lib"
 
 ### CLEAN ###
 if [ -d $deployRoot"/deploy" ] ; then
-	echo "Deleting /deploy"
+	echo "Deleting "$deployRoot"/deploy"
 	cd $deployRoot"/deploy"
 	exec & rm -rf *
 fi
 
 if [ -d $deployRoot"/osgi/modules" ] ; then
-	echo "Deleting /osgi/modules"
+	echo "Deleting "$deployRoot"/osgi/modules"
 	cd $deployRoot"/osgi/modules"
 	exec & rm -rf *
 fi
 
 if [ -d $deployRoot"/osgi/state" ] ; then
-	echo "Deleting /osgi/state"
+	echo "Deleting "$deployRoot"/osgi/state"
 	cd $deployRoot"/osgi/state"
 	exec & rm -rf *
 fi
 
 if [ -d $deployRoot"/osgi/war" ] ; then
-	echo "Deleting /osgi/war"
+	echo "Deleting "$deployRoot"/osgi/war"
 	cd $deployRoot"/osgi/war"
 	exec & rm -rf *
 fi
 
 if [ -d $deployTomcatHome"/temp" ] ; then
-	echo "Deleting Tomcat temp"
+	echo "Deleting "$deployTomcatHome"/temp"
 	cd $deployTomcatHome"/temp"
 	exec & rm -rf *
 fi
 
 if [ -d $deployTomcatHome"/work" ] ; then
-	echo "Deleting Tomcat work"
+	echo "Deleting "$deployTomcatHome"/work"
 	cd $deployTomcatHome"/work"
 	exec & rm -rf *
 fi
 
 if [ -d $deployRoot"/work" ] ; then
-	echo "Deleting /work"
+	echo "Deleting "$deployRoot"/work"
 	cd $deployRoot"/work"
+	exec & rm -rf *
+fi
+
+if [ -d $deployRoot"/logs" ] ; then
+	echo "Deleting "$deployRoot"/logs"
+	cd $deployRoot"/logs"
 	exec & rm -rf *
 fi
 
