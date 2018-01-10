@@ -3,7 +3,9 @@
 
 <project name="lcs-all" basedir="." default="all">
 	<property name="dir.plugins" value="D:/git/ee-6.2/plugins" />
-	<property name="dir.tomcat" value="D:/liferay/portal/ee-6.2/tomcat-7.0.62" />
+	<property name="dir.liferay" value="D:/liferay/portal/ee-6.2" />
+
+	<property name="dir.tomcat" value="${dir.liferay}/tomcat-7.0.62" />
 
 	<property name="dir.hooks.portal-compat-hook" value="${dir.plugins}/hooks/portal-compat-hook" />
 
@@ -34,22 +36,28 @@
 	<target name="all">
 		<delete includeemptydirs="true">
 			<fileset dir="${dir.tomcat}/temp" >
-				<filename regex=".*lcs.*"/>
+				<filename regex=".*lcs.*" />
 			</fileset>
 		</delete>
 
 		<delete includeemptydirs="true">
 			<fileset dir="${dir.tomcat}/webapps" >
-				<filename regex=".*lcs.*"/>
+				<filename regex=".*lcs.*" />
 			</fileset>
 		</delete>
 
 		<delete includeemptydirs="true">
 			<fileset dir="${dir.tomcat}/work/Catalina/localhost" >
-				<filename regex=".*lcs.*"/>
+				<filename regex=".*lcs.*" />
 			</fileset>
 		</delete>
-	
+
+		<delete includeemptydirs="true">
+			<fileset dir="${dir.liferay}/logs" >
+				<filename regex=".*" />
+			</fileset>
+		</delete>
+
 		<delete file="${dir.lib.lcs-portlet}/json-web-service-client-shared.jar" />
 		<delete file="${dir.lib.lcs-portlet}/lcs-shared.jar" />
 		<delete file="${dir.lib.osb-lcs-portlet}/json-web-service-client-shared.jar" />
