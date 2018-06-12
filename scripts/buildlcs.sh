@@ -71,9 +71,9 @@ fi
 ### LCS PLATFORM MODULES ###
 cd $gitLCSRoot
 
-exec & gradle clean idea deployOSBLCSModules deployOSBLCSMonitorModules
+exec & gradle clean idea deployOSBLCSModules
 
 ### LCS CLIENT ###
 cd $gitPortalPrivateRoot"/modules/private/apps/lcs/lcs-portlet"
 
-exec & ant clean deploy
+exec & gradle clean deploy
