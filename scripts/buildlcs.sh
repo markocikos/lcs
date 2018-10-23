@@ -1,8 +1,13 @@
 #!/bin/sh
 
 ### PATHS ###
+## Deployment bundle
 deployRoot="/d/liferay/portal/dxp-7.0"
+
+## LCS Platform source code
 gitLCSRoot="/d/git/lcs"
+
+## LCS Client source code
 gitPortalPrivateRoot="/d/git/ee-7.0/portal"
 
 deployTomcatHome=$deployRoot"/tomcat-8.0.32"
