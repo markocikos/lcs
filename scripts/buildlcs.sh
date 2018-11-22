@@ -81,4 +81,4 @@ exec & ./gradlew clean idea deployOSBLCSModules
 ### LCS CLIENT ###
 cd $gitPortalPrivateRoot"/modules/private/apps/lcs/lcs-portlet"
 
-exec & gradle clean deploy
+exec & ant clean deploy
