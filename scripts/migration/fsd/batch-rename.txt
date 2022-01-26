@@ -1,0 +1,275 @@
+//
+// temporary JSP tag switch
+//
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "<clay:headless-data-set-display"
+with "<%= "headless: " + this.getClass().getSimpleName().replaceAll("_", ".").replaceAll(".005f", "_") %><frontend-data-set:headless-display"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "<clay:data-set-display"
+with "<%= "classic: " + this.getClass().getSimpleName().replaceAll("_", ".").replaceAll(".005f", "_") %><frontend-data-set:classic-display"
+
+
+//
+// packages
+//
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "web.internal.frontend.constants"
+with "web.internal.constants"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "com.liferay.frontend.taglib.clay.data.set"
+with "com.liferay.frontend.data.set"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "internal.frontend.taglib.servlet.taglib.clay.data.set"
+with "internal.frontend.data.set"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "internal.frontend.taglib.clay.data.set"
+with "internal.frontend.data.set"
+
+//
+// constants
+//
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "DataSetConstants"
+with "FDSNames"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "ClayDataSetDisplayNames"
+with "FDSNames"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "COMMERCE_DATA_SET_KEY_COMMERCE_"
+with ""
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "COMMERCE_DATA_SET_KEY_"
+with ""
+
+//
+// views
+//
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "ClayDataSetDisplayView"
+with "FDSView"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "com.liferay.frontend.data.set.FDSView"
+with "com.liferay.frontend.data.set.view.FDSView"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "clay.data.set.display.name"
+with "frontend.data.set.name"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "ClayTableDataSetDisplayView"
+with "TableFDSView"
+
+
+//
+// providers
+//
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "clay.data.provider.key"
+with "fds.data.provider.key"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "ClayDataSetActionProvider"
+with "FDSActionProvider"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "DataSetActionProvider"
+with "FDSActionProvider"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "frontend.data.set.FDSActionProvider"
+with "frontend.data.set.provider.FDSActionProvider"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "ClayDataSetDataProvider"
+with "FDSDataProvider"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "DataSetDataProvider"
+with "FDSDataProvider"
+
+
+//
+// filters
+//
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "ClayDataSetFilter"
+with "FDSFilter"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "ClayTableDataSetFilter"
+with "FDSFilter"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "internal.frontend.taglib.clay.data.set.filter;"
+with "internal.frontend.data.set.filter;"
+
+
+
+//
+// search filters
+//
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "com.liferay.frontend.taglib.clay.data.Filter;"
+with "com.liferay.frontend.data.set.provider.search.FDSKeywords;"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "com.liferay.frontend.taglib.clay.data.Pagination;"
+with "com.liferay.frontend.data.set.provider.search.FDSPagination;"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*.java"
+replace " pagination,"
+with " fdsPagination,"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*.java"
+replace "pagination.get"
+with "fdsPagination.get"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*.java"
+replace "Pagination fdsPagination"
+with "FDSPagination fdsPagination"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*.java"
+replace "FDSFDSPagination"
+with "FDSPagination"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*.java"
+replace " filter,"
+with " fdsKeywords,"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*.java"
+replace " filter)"
+with " fdsKeywords)"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*.java"
+replace "filter.get"
+with "fdsKeywords.get"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*.java"
+replace "Filter fdsKeywords"
+with "FDSKeywords fdsKeywords"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "httpServletRequest, fdsKeywords, fdsPagination, sort"
+with "fdsKeywords, fdsPagination, httpServletRequest, sort"
+
+
+//
+// model
+//
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "ClayDataSetActionDropdownItem"
+with "FDSActionDropdownItem"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "clayDataSetActionDropdownItem"
+with "fdsActionDropdownItem"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "com.liferay.frontend.data.set.servlet.taglib.util.FDSActionDropdownItem"
+with "com.liferay.frontend.data.set.model.FDSActionDropdownItem"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "com/liferay/frontend/taglib/clay/data/set/servlet/taglib/util/FDSActionDropdownItem"
+with "com/liferay/frontend/data/set/model/FDSActionDropdownItem"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace-regex "(?<!(FDS|fds))SortItem"
+with "FDSSortItem"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "sortItem"
+with "fdsSortItem"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "com.liferay.frontend.taglib.clay.servlet.taglib.util.FDSSortItem"
+with "com.liferay.frontend.data.set.model.FDSSortItem"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "ClayTableSchema"
+with "FDSTableSchema"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "clayTableSchema"
+with "fdsTableSchema"
+
+//
+// locale
+//
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "getFDSTableSchema()"
+with "getFDSTableSchema(Locale locale)"
+
+
+//
+// utils
+//
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "ClayDataSetActionTemplates"
+with "FDSActionTemplates"
+
+
+//
+// random SF
+//
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "HttpServletRequest httpServletRequest, FDSKeywords fdsKeywords,"
+with "FDSKeywords fdsKeywords, FDSPagination fdsPagination,"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "FDSPagination fdsPagination, Sort sort)"
+with "HttpServletRequest httpServletRequest, Sort sort)"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "HttpServletRequest httpServletRequest, FDSKeywords fdsKeywords)"
+with "FDSKeywords fdsKeywords, HttpServletRequest httpServletRequest)"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "HttpServletRequest httpServletRequest, long groupId, Object model"
+with "long groupId, HttpServletRequest httpServletRequest, Object model"
+
+in "modules/apps/commerce/commerce-pricing-web/**/*"
+replace "httpServletRequest, fdsKeywords);"
+with "fdsKeywords, httpServletRequest);"
+
+
+//
+// imports
+// do these only once, SF after
+//
+// in "modules/apps/commerce/commerce-pricing-web/**/*"
+// replace-regex "(package.*internal\.frontend\.data\.set\.view.*;)"
+// with "$1 import java.util.Locale;"
+
+// in "modules/apps/commerce/commerce-pricing-web/**/*"
+// replace-regex "(prefix=\"portlet\" %>)"
+// with "$1 <%@ taglib uri="http://liferay.com/tld/frontend-data-set" prefix="frontend-data-set" %>"
+
+// 
+// revert JSP temporary tags
+//
+
+// in "modules/apps/commerce/commerce-pricing-web/**/*"
+// replace "<%= "headless: " + this.getClass().getSimpleName().replaceAll("_", ".").replaceAll(".005f", "_") %>"
+// with ""
+
+// in "modules/apps/commerce/commerce-pricing-web/**/*"
+// replace "<%= "classic: " + this.getClass().getSimpleName().replaceAll("_", ".").replaceAll(".005f", "_") %>"
+// with ""
+
+
